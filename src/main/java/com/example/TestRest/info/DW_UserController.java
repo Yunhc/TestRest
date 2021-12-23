@@ -143,11 +143,6 @@ public class DW_UserController {
 		}
 		
 		return returnMsgList;
-		
-//		List<ReturnMsg> dw_usersaveList = dw_userService.getDW_UserSaveListJson(
-//				  req_param.lang, 		req_param.type, 	req_param.upduser,		req_param.data);
-//		return dw_usersaveList;
-		
 	}
 }
 
