@@ -74,6 +74,8 @@ public class DW_UserRepository {
 //				, EmptySqlParameterSource.INSTANCE
 //				, this.returnmsgRowMapper);
 		
+		//주석 추가 테스트
+		
 		
 		List<ReturnMsg> return_msg = this.jdbcTemplate.query( DW_UserSqlSave.SSQL, BeanPropertyRowMapper.newInstance(ReturnMsg.class));
 		return return_msg;
