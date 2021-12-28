@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.Util;
+import com.example.TestRest.info.model.DW_Login_Req_Param;
+import com.example.TestRest.info.model.DW_Login_Res;
 import com.example.TestRest.info.model.DW_User;
 import com.example.TestRest.info.model.DW_User_Req_Param;
 import com.example.TestRest.info.model.DW_User_Req_Param_Save;
@@ -60,6 +62,17 @@ public class DW_UserController {
 		List<DW_User> dw_userList = dw_userService.getDW_UserList(userid, username, useflag);
 		return dw_userList;
 	}
+	
+	@CrossOrigin("*")
+	@PostMapping(value="/api/auth/signin")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_loginList_post(@RequestBody DW_Login_Req_Param req_param) {
+		log.debug("/api/auth/signin start");
+		log.debug("/api/auth/signin request = {}", req_param.toString());
+		List<DW_Login_Res> dw_login_res = dw_userService.getDW_LoginList(req_param.lang, req_param.userid, req_param.password);
+		return dw_login_res;
+	}
+	
 
 	
 	@CrossOrigin("*")
