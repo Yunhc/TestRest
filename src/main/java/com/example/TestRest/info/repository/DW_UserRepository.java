@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.namedparam.EmptySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.TestRest.info.model.DW_Login_Res;
 import com.example.TestRest.info.model.DW_User;
 import com.example.TestRest.info.model.ReturnMsg;
 
@@ -37,7 +38,17 @@ public class DW_UserRepository {
 	public DW_UserRepository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
+	
+	//사용자 조회
+	public List<DW_Login_Res> loginList(String lang, String userid, String password){
+		
+		DW_LoginSql.SELECT_QUERY(lang, userid, password );
+		log.debug("loginList query = {}", DW_LoginSql.SELECT);
 
+		List<DW_Login_Res> dw_login_res = this.jdbcTemplate.query(DW_LoginSql.SELECT, BeanPropertyRowMapper.newInstance(DW_Login_Res.class));
+		return dw_login_res;
+		}
+		
 	//사용자 조회
 	public List<DW_User> findList(String userid, String username, String useflag){
 		
