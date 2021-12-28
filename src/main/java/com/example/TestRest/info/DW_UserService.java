@@ -2,6 +2,8 @@ package com.example.TestRest.info;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+import com.example.TestRest.info.model.DW_Login_Res;
 import com.example.TestRest.info.model.DW_User;
 import com.example.TestRest.info.model.ReturnMsg;
 import com.example.TestRest.info.repository.DW_UserRepository;
@@ -13,6 +15,10 @@ public class DW_UserService {
 	
 	public DW_UserService(DW_UserRepository dw_userRepository) {
 		this.dw_userRepository = dw_userRepository;
+	}
+	
+	public List<DW_Login_Res> getDW_LoginList(String lang, String userid, String password) {
+		return this.dw_userRepository.loginList(lang, userid, password);
 	}
 	
 	//사용자 조회
