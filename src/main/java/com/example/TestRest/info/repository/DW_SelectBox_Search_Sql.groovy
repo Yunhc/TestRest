@@ -5,6 +5,7 @@ import com.example.TestRest.info.model.DW_SelectBox_Search_Req_Param
 class DW_SelectBox_Search_Sql {
 	public static String SELECT = """""";
 	
+	//콤보박스 조회
 	public static SELECT_QUERY(DW_SelectBox_Search_Req_Param req_param)
 	{		
 		SELECT = """""";
