@@ -1,13 +1,51 @@
+
+
 plugins {
 	id 'org.springframework.boot' version '2.6.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'groovy'
+	id 'war'
+}
+
+
+//언어
+apply plugin: 'java'
+apply plugin: 'war'
+
+//JDK 버전 설정
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//라이브러리 저장소
+repositories {
+	jcenter()
+}
+
+//인코딩
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+////프로젝트 폴더 이름
+////war 설정
+//project.webAppDirName = 'WebContent'
+//war {
+//	archiveName = "${baseName}.${extension}"
+//}
+
+bootWar{
+	archiveBaseName= 'dw_rest'
+	archiveFileName= 'dw_rest.war'
+	archiveVersion='1.0.0'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
+
+bootWar.enabled = false
+war.enabled = true
 
 configurations {
 	compileOnly {
@@ -22,7 +60,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' //YHC 추가
+	
+	
 	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -46,6 +87,9 @@ dependencies {
 	implementation group: 'org.json', name: 'json', version: '20210307'
 	
 	
+//	testCompile fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
+//	compile fileTree(dir: 'lib', include: ['*.jar'])
+//	compile 'ch.qos.logback:logback-classic:1.2.2'
 }
 
 test {
