@@ -29,7 +29,7 @@ public class DWT_STC_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/stc/pda/scan")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dw_selectboxList(@RequestBody DWT_STC_Req_Param req_param) {
+	public Object dw_stc_save_List(@RequestBody DWT_STC_Req_Param req_param) {
 		log.debug("/dwt/stc/pda/scan");
 		log.debug("/dwt/stc/pda/scan request = {}", req_param.toString());
 		List<DWT_STC_Res_Param> res = dw_Service.get_List(req_param);
