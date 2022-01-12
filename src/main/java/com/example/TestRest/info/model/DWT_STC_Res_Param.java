@@ -14,4 +14,6 @@ public class DWT_STC_Res_Param {
 	public String lgort;
 	public String rowno;
 	public String desc;
+	public String message;
+	public String code;
 }
