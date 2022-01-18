@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 //import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 //import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 import com.example.TestRest.info.repository.DWT_Good_Issue_Repository;
@@ -19,13 +21,13 @@ public class DWT_Good_Issue_Service {
 	}
 	
 	//DO 조회
-	public List<DWT_Good_Issue_Res_Param> get_List(DWT_Good_Issue_Req_Param req_param) {
-		return this.dw_repository.findList(req_param);
+	public List<DWT_Good_Issue_Res_Param> do_List(DWT_Good_Issue_Req_Param req_param) {
+		return this.dw_repository.doList(req_param);
 	}
 
-//	//바코드 스캔
-//	public List<DWT_Good_Issue_Scan_Res_Param> get_List(DWT_Good_Issue_Scan_Req_Param req_param) {
-//		return this.dw_repository.BarcodeScan(req_param);
-//	}
+	//바코드 스캔
+	public List<DWT_Good_Issue_Scan_Res_Param> scan_List(DWT_Good_Issue_Scan_Req_Param req_param) {
+		return this.dw_repository.scanList(req_param);
+	}
 
 }
