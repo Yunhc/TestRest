@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
-//import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
-//import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,18 +34,19 @@ public class DWT_Good_Issue_Controller {
 	public Object dw_good_issue_save_List(@RequestBody DWT_Good_Issue_Req_Param req_param) {
 		log.debug("/dwt/good_issue/do_search");
 		log.debug("/dwt/good_issue/do_search request = {}", req_param.toString());
-		List<DWT_Good_Issue_Res_Param> res = dw_Service.get_List(req_param);
+		List<DWT_Good_Issue_Res_Param> res = dw_Service.do_List(req_param);
 		return res;
 	}
 
 	
-//	@CrossOrigin("*")
-//	@PostMapping(value="/dwt/good_issue/scan")
-//	@ResponseStatus(value = HttpStatus.OK)
-//	public Object dw_good_issue_barcode_scan(@RequestBody DWT_Good_Issue_Scan_Req_Param req_param) {
-//		log.debug("/dwt/good_issue/scan");
-//		log.debug("/dwt/good_issue/scan request = {}", req_param.toString());
-//		List<DWT_Good_Issue_Scan_Res_Param> res = dw_Service.get_List(req_param);
-//		return res;
-//	}
+	@CrossOrigin("*")
+	@PostMapping(value="/dwt/good_issue/scan")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_good_issue_barcode_scan(@RequestBody DWT_Good_Issue_Scan_Req_Param req_param) {
+		log.debug("/dwt/good_issue/scan");
+		log.debug("/dwt/good_issue/scan request = {}", req_param.toString());
+		List<DWT_Good_Issue_Scan_Res_Param> res = dw_Service.scan_List(req_param);
+		return res;
+	}
+	
 }
