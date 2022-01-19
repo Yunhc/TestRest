@@ -37,10 +37,10 @@ public class DWT_Good_Issue_Repository {
 	//¹ÙÄÚµå ½ºÄµ
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList(DWT_Good_Issue_Scan_Req_Param req_param){
 		
-		DWT_Good_Issue_Scan_Sql.SELECT_QUERY(req_param );
-		log.debug("scanList query = {}", DWT_Good_Issue_Scan_Sql.SELECT);
+		DWT_Good_Issue_Sql.SCAN_QUERY(req_param );
+		log.debug("scanList query = {}", DWT_Good_Issue_Sql.SELECT);
 
-		List<DWT_Good_Issue_Scan_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Scan_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Scan_Res_Param.class));
+		List<DWT_Good_Issue_Scan_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Scan_Res_Param.class));
 		return res;
 	}
 
