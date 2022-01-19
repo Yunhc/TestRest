@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.info.model.DWT_FG_Receipt_Req_Param;
 import com.example.TestRest.info.model.DWT_FG_Receipt_Res_Param;
+import com.example.TestRest.info.model.DWT_FG_Receipt_Save_Req_Param;
+import com.example.TestRest.info.model.DWT_FG_Receipt_Save_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +35,16 @@ public class DWT_FG_Receipt_Controller {
 		log.debug("/dwt/fg_receipt/scan");
 		log.debug("/dwt/fg_receipt/scan request = {}", req_param.toString());
 		List<DWT_FG_Receipt_Res_Param> res = dw_Service.get_List(req_param);
+		return res;
+	}
+	
+	@CrossOrigin("*")
+	@PostMapping(value="/dwt/fg_receipt/save")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_fg_receipt_save_List(@RequestBody DWT_FG_Receipt_Save_Req_Param req_param) {
+		log.debug("/dwt/fg_receipt/save");
+		log.debug("/dwt/fg_receipt/save request = {}", req_param.toString());
+		List<DWT_FG_Receipt_Save_Res_Param> res = dw_Service.save_List(req_param);
 		return res;
 	}
 }
