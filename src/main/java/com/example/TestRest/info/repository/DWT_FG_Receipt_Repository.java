@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.TestRest.info.model.DWT_FG_Receipt_Req_Param;
 import com.example.TestRest.info.model.DWT_FG_Receipt_Res_Param;
+import com.example.TestRest.info.model.DWT_FG_Receipt_Save_Req_Param;
+import com.example.TestRest.info.model.DWT_FG_Receipt_Save_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +32,17 @@ public class DWT_FG_Receipt_Repository {
 
 		
 		List<DWT_FG_Receipt_Res_Param> res = this.jdbcTemplate.query(DWT_FG_Receipt_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_FG_Receipt_Res_Param.class));
+		return res;
+	}
+	
+	//콤보 내용 조회
+	public List<DWT_FG_Receipt_Save_Res_Param> saveList(DWT_FG_Receipt_Save_Req_Param req_param){
+		
+		DWT_FG_Receipt_Sql.SAVE_QUERY(req_param );
+		log.debug("findList query = {}", DWT_FG_Receipt_Sql.SELECT);
+
+		
+		List<DWT_FG_Receipt_Save_Res_Param> res = this.jdbcTemplate.query(DWT_FG_Receipt_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_FG_Receipt_Save_Res_Param.class));
 		return res;
 	}
 }
