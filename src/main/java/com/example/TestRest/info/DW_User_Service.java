@@ -8,8 +8,8 @@ import com.example.TestRest.info.model.DW_User;
 import com.example.TestRest.info.model.ReturnMsg;
 import com.example.TestRest.info.repository.DW_User_Repository;
 
-@Service
 
+@Service
 public class DW_User_Service {
 	private final DW_User_Repository dw_userRepository;
 	
@@ -27,22 +27,20 @@ public class DW_User_Service {
 	}
 	
 	//사용자 추가 삭제 수정 
-	public List<ReturnMsg> getDW_UserSaveList(
+	public List<ReturnMsg> getDW_UserSaveList_old(
 			  String lang, 		String type, 	String userid, 		String username
 			, String plantcd, 	String wccode, 	String warehouse, 	String auth, 		String role
 			, String use_role, 	String useflag, String forklift, 	String etc, 		String upduser) {
 				
-		return this.dw_userRepository.saveList(
+		return this.dw_userRepository.saveList_old(
 				  lang, 		type, 		userid, 	username
 				, plantcd, 		wccode, 	warehouse, 	auth, 		role
 				, use_role, 	useflag, 	forklift, 	etc, 		upduser);
 	}
 	
 	//사용자 추가 삭제 수정 
-	public List<ReturnMsg> getDW_UserSaveListJson(
-			  String lang, 		String type, 	String upduser, String data) {
-				
-		return null;
+	public List<ReturnMsg> getDW_UserSaveList(String req_param) {
+		return this.dw_userRepository.saveList(req_param);
 	}
 
 }
