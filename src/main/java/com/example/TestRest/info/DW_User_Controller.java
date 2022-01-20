@@ -83,7 +83,7 @@ public class DW_User_Controller {
 	public Object dw_usersaveList_post(@RequestBody DW_User_Req_Param_Save req_param) {
 		log.debug("/dw_usersaveList_post start");
 		log.debug("/dw_usersaveList_post request = {}", req_param.toString());
-		List<ReturnMsg> dw_usersaveList = dw_userService.getDW_UserSaveList(
+		List<ReturnMsg> dw_usersaveList = dw_userService.getDW_UserSaveList_old(
 				  req_param.lang, 		req_param.type, 	req_param.userid, 		req_param.username
 				, req_param.plantcd, 	req_param.wccode, 	req_param.warehouse, 	req_param.auth, 		req_param.role
 				, req_param.use_role, 	req_param.useflag, 	req_param.forklift, 	req_param.etc, 			req_param.upduser);
@@ -91,7 +91,7 @@ public class DW_User_Controller {
 	}
 	
 	@CrossOrigin("*")
-	@PostMapping(value="/dw_usersaveList_p_j", produces = "application/json; charset=utf8")
+	@PostMapping(value="/dw_usersaveList_p_j_old", produces = "application/json; charset=utf8")
 	@ResponseStatus(value = HttpStatus.OK)
 //	public Object dw_usersaveList_post_j(@RequestBody DW_User_Req_Param_Save_Json req_param) {
 //		log.debug("[/dw_usersaveList_post_j start]");
@@ -99,7 +99,7 @@ public class DW_User_Controller {
 //		log.debug("[/dw_usersaveList_post_j request] = {}", req_param.upduser);
 //		log.debug("[/dw_usersaveList_post_j request] = {}", Object.keys(req_param.data).length);
 	
-	public Object dw_usersaveList_post_j(@RequestBody String req_param) {
+	public Object dw_usersaveList_post_j_old(@RequestBody String req_param) {
 //		JSONParser jsonParser = new JSONParser();
 //		Object obj = null;
 //		try {
@@ -126,7 +126,7 @@ public class DW_User_Controller {
 			JSONObject dtlObject = jsonData.getJSONObject(i);
 			log.debug("[userid] = {}", dtlObject.get("userid"));
 			
-			returnMsgList = dw_userService.getDW_UserSaveList(
+			returnMsgList = dw_userService.getDW_UserSaveList_old(
 					  Util.GetData(jsonObject.getString("lang")), 		Util.GetData(jsonObject.getString("type")), 	Util.GetData(dtlObject.getString("userid")) 		
 					, Util.GetData(dtlObject.getString("username")), 	Util.GetData(dtlObject.getString("plantcd")), 	Util.GetData(dtlObject.getString("wccode"))
 					, Util.GetData(dtlObject.getString("warehouse")), 	Util.GetData(dtlObject.getString("auth")), 		Util.GetData(dtlObject.getString("role"))
@@ -146,6 +146,16 @@ public class DW_User_Controller {
 			}
 		}
 		
+		return returnMsgList;
+	}
+	
+	@CrossOrigin("*")
+	@PostMapping(value="/dw_usersaveList_p_j", produces = "application/json; charset=utf8")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_usersaveList_post_j(@RequestBody String req_param) {		
+//		log.debug("/dw_usersaveList_p_j");
+//		log.debug("/dw_usersaveList_p_j = {}", req_param.toString());
+		List<ReturnMsg> returnMsgList = dw_userService.getDW_UserSaveList(req_param);
 		return returnMsgList;
 	}
 }
