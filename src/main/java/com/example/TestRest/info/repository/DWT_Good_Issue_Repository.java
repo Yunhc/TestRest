@@ -11,6 +11,8 @@ import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,11 +26,11 @@ public class DWT_Good_Issue_Repository {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	//DO 조회
+	//DO 조회 - DO번호
 	public List<DWT_Good_Issue_Res_Param> doList(DWT_Good_Issue_Req_Param req_param){
 		
 		DWT_Good_Issue_Sql.SELECT_QUERY(req_param );
-		log.debug("findList query = {}", DWT_Good_Issue_Sql.SELECT);
+		log.debug("doList query = {}", DWT_Good_Issue_Sql.SELECT);
 
 		List<DWT_Good_Issue_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Res_Param.class));
 		return res;
@@ -44,4 +46,13 @@ public class DWT_Good_Issue_Repository {
 		return res;
 	}
 
+	//DO 조회 - 날짜
+	public List<DWT_Good_Issue_DO_Search_Date_Res_Param> dodateList(DWT_Good_Issue_DO_Search_Date_Req_Param req_param){
+		
+		DWT_Good_Issue_Sql.SELECT_DO_Date_QUERY(req_param );
+		log.debug("dodateList query = {}", DWT_Good_Issue_Sql.SELECT);
+
+		List<DWT_Good_Issue_DO_Search_Date_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_DO_Search_Date_Res_Param.class));
+		return res;
+	}
 }
