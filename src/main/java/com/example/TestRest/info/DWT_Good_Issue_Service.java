@@ -8,8 +8,8 @@ import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
-//import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
-//import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
 import com.example.TestRest.info.repository.DWT_Good_Issue_Repository;
 
 @Service
@@ -20,7 +20,7 @@ public class DWT_Good_Issue_Service {
 		this.dw_repository = dw_repository;
 	}
 	
-	//DO 조회
+	//DO 조회 - DO 번호
 	public List<DWT_Good_Issue_Res_Param> do_List(DWT_Good_Issue_Req_Param req_param) {
 		return this.dw_repository.doList(req_param);
 	}
@@ -30,4 +30,9 @@ public class DWT_Good_Issue_Service {
 		return this.dw_repository.scanList(req_param);
 	}
 
+	//DO 조회 - 날짜
+	public List<DWT_Good_Issue_DO_Search_Date_Res_Param> do_date_List(DWT_Good_Issue_DO_Search_Date_Req_Param req_param) {
+		return this.dw_repository.dodateList(req_param);
+	}
+	
 }
