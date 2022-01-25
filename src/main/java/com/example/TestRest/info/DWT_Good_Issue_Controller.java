@@ -14,6 +14,8 @@ import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,6 +48,16 @@ public class DWT_Good_Issue_Controller {
 		log.debug("/dwt/good_issue/scan");
 		log.debug("/dwt/good_issue/scan request = {}", req_param.toString());
 		List<DWT_Good_Issue_Scan_Res_Param> res = dw_Service.scan_List(req_param);
+		return res;
+	}
+
+	@CrossOrigin("*")
+	@PostMapping(value="/dwt/good_issue/do_search_date")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_good_issue_do_search_date(@RequestBody DWT_Good_Issue_DO_Search_Date_Req_Param req_param) {
+		log.debug("/dwt/good_issue/do_search_date");
+		log.debug("/dwt/good_issue/do_search_date request = {}", req_param.toString());
+		List<DWT_Good_Issue_DO_Search_Date_Res_Param> res = dw_Service.do_date_List(req_param);
 		return res;
 	}
 	
