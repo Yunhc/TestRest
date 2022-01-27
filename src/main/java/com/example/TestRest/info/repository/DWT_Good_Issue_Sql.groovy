@@ -3,6 +3,7 @@ package com.example.TestRest.info.repository
 import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param
+import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Req_Param
 
 class DWT_Good_Issue_Sql {
 	public static String SELECT = """""";
@@ -41,5 +42,16 @@ class DWT_Good_Issue_Sql {
 		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_werks + """'"""
 		SELECT += """, '""" + req_param.i_date + """'"""
+	}
+	
+	//스캔 바코드 조회
+	public static SELECT_Bar_QUERY(DWT_Good_Issue_Bar_Search_Req_Param req_param)
+	{
+		SELECT = """""";
+		SELECT += """ EXEC AURUN.BARCODE_AUTEST.DBO.USP_MWMS_GI_BAR_SEARCH """
+		SELECT += """  '""" + req_param.i_lang + """'"""
+		SELECT += """, '""" + req_param.i_userid + """'"""
+		SELECT += """, '""" + req_param.i_werks + """'"""
+		SELECT += """, '""" + req_param.i_vbeln + """'"""
 	}
 }
