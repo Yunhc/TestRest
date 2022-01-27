@@ -13,6 +13,8 @@ import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,6 +55,16 @@ public class DWT_Good_Issue_Repository {
 		log.debug("dodateList query = {}", DWT_Good_Issue_Sql.SELECT);
 
 		List<DWT_Good_Issue_DO_Search_Date_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_DO_Search_Date_Res_Param.class));
+		return res;
+	}
+
+	//스캔 바코드 조회
+	public List<DWT_Good_Issue_Bar_Search_Res_Param> barList(DWT_Good_Issue_Bar_Search_Req_Param req_param){
+		
+		DWT_Good_Issue_Sql.SELECT_Bar_QUERY(req_param );
+		log.debug("barList query = {}", DWT_Good_Issue_Sql.SELECT);
+
+		List<DWT_Good_Issue_Bar_Search_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Bar_Search_Res_Param.class));
 		return res;
 	}
 }
