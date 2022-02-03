@@ -131,13 +131,22 @@ public class DW_User_Repository {
 			for(int i=0; i<jsonData.length(); i++) {
 				JSONObject dtlObject = jsonData.getJSONObject(i);
 				log.debug("[userid] = {}", dtlObject.get("userid"));
+				log.debug("[wccode] = {}", dtlObject.get("wccode"));
+				
+//				DW_User_Sql.SAVE_QUERY(
+//					  Util.GetData(jsonObject.getString("lang")), 		Util.GetData(jsonObject.getString("type")), 	Util.GetData(dtlObject.getString("userid")) 		
+//					, Util.GetData(dtlObject.getString("username")), 	Util.GetData(dtlObject.getString("plantcd")), 	Util.GetData(dtlObject.getString("wccode"))
+//					, Util.GetData(dtlObject.getString("warehouse")), 	Util.GetData(dtlObject.getString("auth")), 		Util.GetData(dtlObject.getString("role"))
+//					, Util.GetData(dtlObject.getString("use_role")), 	Util.GetData(dtlObject.getString("useflag")), 	Util.GetData(dtlObject.getString("forklift"))
+//					, Util.GetData(dtlObject.getString("etc")), 		Util.GetData(jsonObject.getString("upduser"))
+//				);
 				
 				DW_User_Sql.SAVE_QUERY(
-					  Util.GetData(jsonObject.getString("lang")), 		Util.GetData(jsonObject.getString("type")), 	Util.GetData(dtlObject.getString("userid")) 		
-					, Util.GetData(dtlObject.getString("username")), 	Util.GetData(dtlObject.getString("plantcd")), 	Util.GetData(dtlObject.getString("wccode"))
-					, Util.GetData(dtlObject.getString("warehouse")), 	Util.GetData(dtlObject.getString("auth")), 		Util.GetData(dtlObject.getString("role"))
-					, Util.GetData(dtlObject.getString("use_role")), 	Util.GetData(dtlObject.getString("useflag")), 	Util.GetData(dtlObject.getString("forklift"))
-					, Util.GetData(dtlObject.getString("etc")), 		Util.GetData(jsonObject.getString("upduser"))
+					  Util.GetData(jsonObject.get("lang")), 		Util.GetData(jsonObject.get("type")), 		Util.GetData(dtlObject.get("userid")) 		
+					, Util.GetData(dtlObject.get("username")), 		Util.GetData(dtlObject.get("plantcd")), 	Util.GetData(dtlObject.get("wccode"))
+					, Util.GetData(dtlObject.get("warehouse")), 	Util.GetData(dtlObject.get("auth")), 		Util.GetData(dtlObject.get("role"))
+					, Util.GetData(dtlObject.get("use_role")), 		Util.GetData(dtlObject.get("useflag")), 	Util.GetData(dtlObject.get("forklift"))
+					, Util.GetData(dtlObject.get("etc")), 			Util.GetData(jsonObject.get("upduser"))
 				);
 				
 				log.debug("saveList query = {}", DW_User_Sql.SELECT);
