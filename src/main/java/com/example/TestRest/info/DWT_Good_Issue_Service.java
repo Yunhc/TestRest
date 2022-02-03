@@ -28,7 +28,7 @@ public class DWT_Good_Issue_Service {
 	}
 
 	//바코드 스캔
-	public List<DWT_Good_Issue_Scan_Res_Param> scan_List(DWT_Good_Issue_Scan_Req_Param req_param) {
+	public List<DWT_Good_Issue_Scan_Res_Param> scan_List(String req_param) {
 		return this.dw_repository.scanList(req_param);
 	}
 
