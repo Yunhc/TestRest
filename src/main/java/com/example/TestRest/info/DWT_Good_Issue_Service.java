@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
-import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
