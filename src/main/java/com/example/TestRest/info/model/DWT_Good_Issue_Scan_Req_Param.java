@@ -11,6 +11,8 @@ public class DWT_Good_Issue_Scan_Req_Param {
 	public String i_werks;
 	public String i_vbeln;
 	public String i_barno;
-	public int i_qty;
+	public String i_qty;
 	public String i_delflag;
+	public String i_calltype;
+	public String data;
 }
