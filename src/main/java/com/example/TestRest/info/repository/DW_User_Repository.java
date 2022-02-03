@@ -44,14 +44,14 @@ public class DW_User_Repository {
 //	}
 	
     @Bean
-    public PlatformTransactionManager transactionManager(DataSource dataSource)
+    public PlatformTransactionManager DW_User_transactionManager(DataSource dataSource)
     {
         return new DataSourceTransactionManager(dataSource);
     }
     
 	public DW_User_Repository(JdbcTemplate jdbcTemplate, DataSource dataSource) {
 		this.jdbcTemplate = jdbcTemplate;
-		this.txManager = transactionManager(dataSource);
+		this.txManager = DW_User_transactionManager(dataSource);
 	}
 	
 	//사용자 조회
