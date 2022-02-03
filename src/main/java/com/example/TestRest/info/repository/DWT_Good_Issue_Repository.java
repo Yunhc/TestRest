@@ -70,10 +70,10 @@ public class DWT_Good_Issue_Repository {
 
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList(String req_param){
 //		log.debug("scanList -----------------------> 0");
-		DefaultTransactionDefinition td = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
-		td.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
-		td.setTimeout(10);
-		TransactionStatus status = txManager.getTransaction(td);
+//		DefaultTransactionDefinition td = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
+//		td.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
+//		td.setTimeout(10);
+//		TransactionStatus status = txManager.getTransaction(td);
 		
 		List<DWT_Good_Issue_Scan_Res_Param> res = null;
 		
@@ -119,12 +119,12 @@ public class DWT_Good_Issue_Repository {
 				strBarno = Util.GetData(dtlObject.get("barno"));
 			}
 			
-			if (!res.get(0).code.equals("NG"))
-				txManager.commit(status);
-			else
-				txManager.rollback(status);
+//			if (!res.get(0).code.equals("NG"))
+//				txManager.commit(status);
+//			else
+//				txManager.rollback(status);
 		} catch(Exception e) {
-			txManager.rollback(status);
+//			txManager.rollback(status);
 		}
 		
 		return res;
