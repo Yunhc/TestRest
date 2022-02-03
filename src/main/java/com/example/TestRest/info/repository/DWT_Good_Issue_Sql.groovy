@@ -20,17 +20,19 @@ class DWT_Good_Issue_Sql {
 	}
 	
 	//바코드 스캔
-	public static SCAN_QUERY(DWT_Good_Issue_Scan_Req_Param req_param)
+	public static SCAN_QUERY(String i_lang, String i_userid, 	String i_werks, 	String i_vbeln
+		, String i_barno, 	String i_qty, 	String i_delflag, 	String i_calltype)
 	{
 		SELECT = """""";
 		SELECT += """ EXEC AURUN.BARCODE_AUTEST.DBO.USP_MWMS_GI_BARCODE_SCAN """
-		SELECT += """  '""" + req_param.i_lang + """'"""
-		SELECT += """, '""" + req_param.i_userid + """'"""
-		SELECT += """, '""" + req_param.i_werks + """'"""
-		SELECT += """, '""" + req_param.i_vbeln + """'"""
-		SELECT += """, '""" + req_param.i_barno + """'"""
-		SELECT += """, '""" + req_param.i_qty + """'"""
-		SELECT += """, '""" + req_param.i_delflag + """'"""
+		SELECT += """  '""" + i_lang + """'"""
+		SELECT += """, '""" + i_userid + """'"""
+		SELECT += """, '""" + i_werks + """'"""
+		SELECT += """, '""" + i_vbeln + """'"""
+		SELECT += """, '""" + i_barno + """'"""
+		SELECT += """, '""" + i_qty + """'"""
+		SELECT += """, '""" + i_delflag + """'"""
+		SELECT += """, '""" + i_calltype + """'"""
 	}
 
 	//DO 조회 - 날짜
