@@ -2,7 +2,25 @@ package com.example.TestRest.info;
 
 import java.util.List;
 
+
+
+import javax.sql.DataSource;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.info.model.DWT_Good_Issue_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Res_Param;
-import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
+//import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
+//import com.example.TestRest.info.model.ReturnMsg;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Req_Param;
@@ -46,13 +65,14 @@ public class DWT_Good_Issue_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue/scan")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dw_good_issue_barcode_scan(@RequestBody DWT_Good_Issue_Scan_Req_Param req_param) {
+	public Object dw_good_issue_barcode_scan(@RequestBody String req_param) {
 		log.debug("/dwt/good_issue/scan");
 		log.debug("/dwt/good_issue/scan request = {}", req_param.toString());
 		List<DWT_Good_Issue_Scan_Res_Param> res = dw_Service.scan_List(req_param);
 		return res;
 	}
 
+	
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue/do_search_date")
 	@ResponseStatus(value = HttpStatus.OK)
