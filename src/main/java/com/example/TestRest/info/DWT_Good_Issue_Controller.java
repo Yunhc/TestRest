@@ -47,7 +47,7 @@ public class DWT_Good_Issue_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue/scan")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dwt_good_issue_barcode_scan(@RequestBody String req_param) {
+	public Object dwt_good_issue_scan(@RequestBody String req_param) {
 		log.debug("/dwt/good_issue/scan");
 		log.debug("/dwt/good_issue/scan request = {}", req_param.toString());
 		List<DWT_Good_Issue_Scan_Res_Param> res = dw_Service.scan_List(req_param);
@@ -58,7 +58,7 @@ public class DWT_Good_Issue_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue/do_search_date")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dw_good_issue_do_search_date(@RequestBody DWT_Good_Issue_DO_Search_Date_Req_Param req_param) {
+	public Object dwt_good_issue_do_search_date(@RequestBody DWT_Good_Issue_DO_Search_Date_Req_Param req_param) {
 		log.debug("/dwt/good_issue/do_search_date");
 		log.debug("/dwt/good_issue/do_search_date request = {}", req_param.toString());
 		List<DWT_Good_Issue_DO_Search_Date_Res_Param> res = dw_Service.do_date_List(req_param);
@@ -68,7 +68,7 @@ public class DWT_Good_Issue_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue/bar_search")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dw_good_issue_bar_search(@RequestBody DWT_Good_Issue_Bar_Search_Req_Param req_param) {
+	public Object dwt_good_issue_bar_search(@RequestBody DWT_Good_Issue_Bar_Search_Req_Param req_param) {
 		log.debug("/dwt/good_issue/bar_search");
 		log.debug("/dwt/good_issue/bar_search request = {}", req_param.toString());
 		List<DWT_Good_Issue_Bar_Search_Res_Param> res = dw_Service.bar_List(req_param);
