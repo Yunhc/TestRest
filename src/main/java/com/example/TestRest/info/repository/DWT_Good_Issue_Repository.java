@@ -25,6 +25,8 @@ import com.example.TestRest.info.model.DWT_Good_Issue_DO_Search_Date_Res_Param;
 import com.example.TestRest.Util;
 import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Bar_Search_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Save_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_DO_Save_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -72,6 +74,7 @@ public class DWT_Good_Issue_Repository {
 //		return res;
 //	}
 	
+
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList(String req_param){
 		List<DWT_Good_Issue_Scan_Res_Param> res = null;
 		
@@ -90,6 +93,7 @@ public class DWT_Good_Issue_Repository {
 		return res;
 	}	
 	
+
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList_S(String req_param){
 		List<DWT_Good_Issue_Scan_Res_Param> res = null;
 		try {
@@ -113,6 +117,7 @@ public class DWT_Good_Issue_Repository {
 		return res;
 	}
 
+	
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList_D(String req_param){
 //		log.debug("scanList -----------------------> 0");
 //		DefaultTransactionDefinition td = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
@@ -173,6 +178,7 @@ public class DWT_Good_Issue_Repository {
 		
 		return res;
 	}
+
 	
 	//DO 조회 - 날짜
 	public List<DWT_Good_Issue_DO_Search_Date_Res_Param> dodateList(DWT_Good_Issue_DO_Search_Date_Req_Param req_param){
@@ -184,6 +190,7 @@ public class DWT_Good_Issue_Repository {
 		return res;
 	}
 
+	
 	//스캔 바코드 조회
 	public List<DWT_Good_Issue_Bar_Search_Res_Param> barList(DWT_Good_Issue_Bar_Search_Req_Param req_param){
 		
@@ -191,6 +198,16 @@ public class DWT_Good_Issue_Repository {
 		log.debug("barList query = {}", DWT_Good_Issue_Sql.SELECT);
 
 		List<DWT_Good_Issue_Bar_Search_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Bar_Search_Res_Param.class));
+		return res;
+	}
+
+	//DO 출고 처리
+	public List<DWT_Good_Issue_DO_Save_Res_Param> saveList(DWT_Good_Issue_DO_Save_Req_Param req_param){
+		
+		DWT_Good_Issue_Sql.SELECT_DO_Save_QUERY(req_param );
+		log.debug("saveList query = {}", DWT_Good_Issue_Sql.SELECT);
+
+		List<DWT_Good_Issue_DO_Save_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_DO_Save_Res_Param.class));
 		return res;
 	}
 }
