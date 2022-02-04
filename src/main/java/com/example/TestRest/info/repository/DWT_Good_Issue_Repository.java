@@ -34,18 +34,22 @@ import lombok.extern.slf4j.Slf4j;
 public class DWT_Good_Issue_Repository {
 	@Autowired
 	private final JdbcTemplate jdbcTemplate;
-	private PlatformTransactionManager txManager;
-	
-	@Bean
-    private PlatformTransactionManager DWT_Good_Issue_transactionManager(DataSource dataSource)
-    {
-        return new DataSourceTransactionManager(dataSource);
-    }
+//	private PlatformTransactionManager txManager;
+//	
+//	@Bean
+//    private PlatformTransactionManager DWT_Good_Issue_transactionManager(DataSource dataSource)
+//    {
+//        return new DataSourceTransactionManager(dataSource);
+//    }
     
 	
-	public DWT_Good_Issue_Repository(JdbcTemplate jdbcTemplate, DataSource dataSource) {
+//	public DWT_Good_Issue_Repository(JdbcTemplate jdbcTemplate, DataSource dataSource) {
+//		this.jdbcTemplate = jdbcTemplate;
+//		this.txManager = DWT_Good_Issue_transactionManager(dataSource);
+//	}
+//	
+	public DWT_Good_Issue_Repository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-		this.txManager = DWT_Good_Issue_transactionManager(dataSource);
 	}
 	
 	//DO 조회 - DO번호
@@ -67,8 +71,49 @@ public class DWT_Good_Issue_Repository {
 //		List<DWT_Good_Issue_Scan_Res_Param> res = this.jdbcTemplate.query(DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Scan_Res_Param.class));
 //		return res;
 //	}
-
+	
 	public List<DWT_Good_Issue_Scan_Res_Param> scanList(String req_param){
+		List<DWT_Good_Issue_Scan_Res_Param> res = null;
+		
+		JSONObject jsonObject = new JSONObject(req_param);
+		String stype = jsonObject.getString("i_calltype");
+
+		log.debug("[i_calltype] = {}", jsonObject.get("i_calltype"));
+		
+		if (stype.equals("S")) {
+			res = scanList_S(req_param);
+		}
+		else {
+			res = scanList_D(req_param);
+		}
+			
+		return res;
+	}	
+	
+	public List<DWT_Good_Issue_Scan_Res_Param> scanList_S(String req_param){
+		List<DWT_Good_Issue_Scan_Res_Param> res = null;
+		try {
+			JSONObject jsonObject = new JSONObject(req_param);
+	
+			log.debug("[i_barno] = {}", jsonObject.get("i_barno"));
+			
+			DWT_Good_Issue_Sql.SCAN_QUERY(
+				  Util.GetData(jsonObject.get("i_lang")), 		Util.GetData(jsonObject.get("i_userid")),	Util.GetData(jsonObject.get("i_werks")) 		
+				, Util.GetData(jsonObject.get("i_vbeln")), 		Util.GetData(jsonObject.get("i_barno")), 	Util.GetData(jsonObject.get("i_qty"))
+				, Util.GetData(jsonObject.get("i_delflag")), 	Util.GetData(jsonObject.get("i_calltype"))
+			);
+				
+			log.debug("scanList query = {}", DWT_Good_Issue_Sql.SELECT);
+			
+			res = this.jdbcTemplate.query( DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Scan_Res_Param.class));
+			
+		} catch(Exception e) {
+		}
+	
+		return res;
+	}
+
+	public List<DWT_Good_Issue_Scan_Res_Param> scanList_D(String req_param){
 //		log.debug("scanList -----------------------> 0");
 //		DefaultTransactionDefinition td = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
 //		td.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
@@ -83,8 +128,6 @@ public class DWT_Good_Issue_Repository {
 			log.debug("[data] = {}", jsonObject.get("data"));
 			
 			JSONArray jsonData = jsonObject.getJSONArray("data");
-			
-			
 			log.debug("[Data Count] = {}", jsonData.length());
 			
 			String strBarno = "";
@@ -105,14 +148,15 @@ public class DWT_Good_Issue_Repository {
 					res = this.jdbcTemplate.query( DWT_Good_Issue_Sql.SELECT, BeanPropertyRowMapper.newInstance(DWT_Good_Issue_Scan_Res_Param.class));
 					
 					log.debug("[process status] = {}", res.get(0).code);
-					if (res.get(0).code.equals("NG")) {
+					
+					if (res.get(0).code == null) {
+						log.debug("[process status] = {}", "OK");
+						log.debug("[process msg] = {}", res.get(0).barno);
+					}
+					else{
 						log.debug("[process status] = {}", "NG");
 						log.debug("[process message] = {}", res.get(0).message);
 						break;
-					}
-					else{
-						log.debug("[process status] = {}", "OK");
-						log.debug("[process msg] = {}", res.get(0).barno);
 					}					
 				}
 				
