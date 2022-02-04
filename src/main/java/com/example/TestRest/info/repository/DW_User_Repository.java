@@ -62,7 +62,7 @@ public class DW_User_Repository {
 
 		List<DW_Login_Res> dw_login_res = this.jdbcTemplate.query(DW_Login_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Login_Res.class));
 		return dw_login_res;
-		}
+	}
 		
 	//사용자 조회
 	public List<DW_User> findList(String userid, String username, String useflag){
