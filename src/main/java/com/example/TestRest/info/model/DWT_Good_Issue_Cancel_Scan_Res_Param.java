@@ -20,5 +20,6 @@ public class DWT_Good_Issue_Cancel_Scan_Res_Param {
 	public String MAKTX;
 		
 	public String code;
+	public String subcode;
 	public String message;
 }
