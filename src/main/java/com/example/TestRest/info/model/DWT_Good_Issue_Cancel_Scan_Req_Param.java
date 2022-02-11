@@ -10,4 +10,8 @@ public class DWT_Good_Issue_Cancel_Scan_Req_Param {
 	public String i_userid;
 	public String i_werks;
 	public String i_barno;
+	public String i_vbeln;
+	public String i_matnr;
+	public String i_proctype;
+	public String i_calltype;
 }
