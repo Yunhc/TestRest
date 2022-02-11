@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.TestRest.info.model.DWT_Good_Issue_Cancel_Save_Req_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Cancel_Save_Res_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Cancel_Scan_Req_Param;
 import com.example.TestRest.info.model.DWT_Good_Issue_Cancel_Scan_Res_Param;
 
@@ -25,6 +27,7 @@ public class DWT_Good_Issue_Cancel_Controller {
 		this.dw_Service = dw_Service;
 	}
 
+	//출고취소할 바코드 스캔
 	@CrossOrigin("*")
 	@PostMapping(value="/dwt/good_issue_cancel/scan")
 	@ResponseStatus(value = HttpStatus.OK)
@@ -34,4 +37,15 @@ public class DWT_Good_Issue_Cancel_Controller {
 		List<DWT_Good_Issue_Cancel_Scan_Res_Param> res = dw_Service.scan_List(req_param);
 		return res;
 	}
+	
+	//스캔한 바코드 출고취소
+	@CrossOrigin("*")
+	@PostMapping(value="/dwt/good_issue_cancel/save")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dwt_good_issue_cancel_save(@RequestBody DWT_Good_Issue_Cancel_Save_Req_Param req_param) {
+		log.debug("/dwt/good_issue_cancel/save");
+		log.debug("/dwt/good_issue_cancel/save request = {}", req_param.toString());
+		List<DWT_Good_Issue_Cancel_Save_Res_Param> res = dw_Service.save_List(req_param);
+		return res;
+	}	
 }
