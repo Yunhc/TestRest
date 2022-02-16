@@ -12,7 +12,7 @@ public class DW_Good_Receipt_Res_Param {
 	public String bedat;	
 	public String lifnr;
 	public String name1;
-	public String burks;
+	public String bukrs;
 	public String ekgrp;
 	public String bstyp;
 	public String ematn;
