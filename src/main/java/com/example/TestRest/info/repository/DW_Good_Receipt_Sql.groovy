@@ -10,7 +10,7 @@ class DW_Good_Receipt_Sql {
 	
 	//PO 조회 - PO번호
 	public static SELECT_QUERY(DW_Good_Receipt_Req_Param req_param)
-	{		
+	{
 		SELECT = """""";
 		SELECT += """ EXEC USP_MWMS_MMPO_GR_ORD_SEARCH """
 		SELECT += """  '""" + req_param.i_lang + """'"""
@@ -28,9 +28,10 @@ class DW_Good_Receipt_Sql {
 		SELECT = """""";
 		SELECT += """ EXEC USP_MWMS_MMPO_GR_ORD_DETAIL_SEARCH """
 		SELECT += """  '""" + req_param.i_lang + """'"""
-		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_werks + """'"""
-		SELECT += """, '""" + req_param.i_date + """'"""
+		SELECT += """, '""" + req_param.i_userid + """'"""
+		SELECT += """, '""" + req_param.i_ord_no + """'"""
+		SELECT += """, '""" + req_param.i_ord_item_no + """'"""
 	}
 	
 	//바코드 스캔
@@ -39,13 +40,11 @@ class DW_Good_Receipt_Sql {
 		SELECT = """""";
 		SELECT += """ EXEC USP_MWMS_MMPO_GR_BARCODE_SCAN """
 		SELECT += """  '""" + req_param.i_lang + """'"""
-		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_werks + """'"""
-		SELECT += """, '""" + req_param.i_vbeln + """'"""
+		SELECT += """, '""" + req_param.i_userid + """'"""
+		SELECT += """, '""" + req_param.i_ord_no + """'"""
+		SELECT += """, '""" + req_param.i_ord_item_no + """'"""
 		SELECT += """, '""" + req_param.i_barno + """'"""
-		SELECT += """, '""" + req_param.i_qty + """'"""
-		SELECT += """, '""" + req_param.i_delflag + """'"""
-		SELECT += """, '""" + req_param.i_calltype + """'"""
 	}
 
 	//PO 입고 처리
@@ -54,8 +53,8 @@ class DW_Good_Receipt_Sql {
 		SELECT = """""";
 		SELECT += """ EXEC USP_MWMS_MMPO_GR_SAVE """
 		SELECT += """  '""" + req_param.i_lang + """'"""
-		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_werks + """'"""
+		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_vbeln + """'"""
 		SELECT += """, '""" + req_param.i_procflag + """'"""
 	}
