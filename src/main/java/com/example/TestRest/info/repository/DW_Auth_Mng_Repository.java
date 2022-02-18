@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.example.TestRest.Util;
+import com.example.TestRest.info.model.DW_Auth_Mng_Auth_Res_Param;
 import com.example.TestRest.info.model.DW_Auth_Mng_User_Res_Param;
 
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,21 @@ public class DW_Auth_Mng_Repository {
 		log.debug("findList query = {}", DW_User_Sql.SELECT);
 
 		List<DW_Auth_Mng_User_Res_Param> dw_user = this.jdbcTemplate.query(DW_Auth_Mng_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Auth_Mng_User_Res_Param.class));
+		return dw_user;
+	}
+	
+	//권한 조회
+	public List<DW_Auth_Mng_Auth_Res_Param> findAuth(String req_param){
+		JSONObject jsonObject = new JSONObject(req_param);
+		
+		DW_Auth_Mng_Sql.SELECT_AUTH_QUERY(
+			Util.GetData(jsonObject.get("lang")),
+			Util.GetData(jsonObject.get("userid")), 
+			Util.GetData(jsonObject.get("procdate"))
+		);
+		log.debug("findAuth query = {}", DW_User_Sql.SELECT);
+
+		List<DW_Auth_Mng_Auth_Res_Param> dw_user = this.jdbcTemplate.query(DW_Auth_Mng_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Auth_Mng_Auth_Res_Param.class));
 		return dw_user;
 	}
 
