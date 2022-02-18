@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.TestRest.info.model.DW_Auth_Mng_Auth_Res_Param;
 import com.example.TestRest.info.model.DW_Auth_Mng_User_Res_Param;
 import com.example.TestRest.info.repository.DW_Auth_Mng_Repository;
 
@@ -19,5 +20,10 @@ public class DW_Auth_Mng_Service {
 	//사용자 조회
 	public List<DW_Auth_Mng_User_Res_Param> findList(String req_param) {
 		return this.dw_repository.findList(req_param);
+	}
+	
+	//사용자 조회
+	public List<DW_Auth_Mng_Auth_Res_Param> findAuth(String req_param) {
+		return this.dw_repository.findAuth(req_param);
 	}
 }
