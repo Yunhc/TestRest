@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.info.model.DW_Auth_Mng_Auth_Res_Param;
 import com.example.TestRest.info.model.DW_Auth_Mng_User_Res_Param;
+import com.example.TestRest.info.model.ReturnMsg;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +31,7 @@ public class DW_Auth_Mng_Controller {
 	@ResponseStatus(value = HttpStatus.OK)
 	public Object dw_auth_mng_user_search_post_j(@RequestBody String req_param) {		
 
-		log.debug("/dw_label_hist_search_post_j = {}", req_param.toString());
+		log.debug("/dw_auth_mng_user_search_p_j = {}", req_param.toString());
 		List<DW_Auth_Mng_User_Res_Param> res = dw_Service.findList(req_param);
 		return res;
 	}
@@ -40,8 +41,18 @@ public class DW_Auth_Mng_Controller {
 	@ResponseStatus(value = HttpStatus.OK)
 	public Object dw_auth_mng_auth_search_post_j(@RequestBody String req_param) {		
 
-		log.debug("/dw_label_hist_search_post_j = {}", req_param.toString());
+		log.debug("/dw_auth_mng_search_post_j = {}", req_param.toString());
 		List<DW_Auth_Mng_Auth_Res_Param> res = dw_Service.findAuth(req_param);
+		return res;
+	}
+	
+	@CrossOrigin("*")
+	@PostMapping(value="/dw_auth_mng_auth_save_p_j", produces = "application/json; charset=utf8")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_auth_mng_auth_save_post_j(@RequestBody String req_param) {		
+
+//		log.debug("/dw_auth_mng_auth_save_p_j = {}", req_param.toString());
+		List<ReturnMsg> res = dw_Service.saveList(req_param);
 		return res;
 	}
 
