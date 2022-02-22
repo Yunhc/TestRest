@@ -68,7 +68,7 @@ public class DW_Good_Receipt_Controller {
 	@CrossOrigin("*")
 	@PostMapping(value="/dw/good_receipt/save")
 	@ResponseStatus(value = HttpStatus.OK)
-	public Object dw_good_receipt_save(@RequestBody DW_Good_Receipt_Save_Req_Param req_param) {
+	public Object dw_good_receipt_save(@RequestBody String req_param) {
 		log.debug("/dw/good_receipt/save");
 		log.debug("/dw/good_receipt/save = {}", req_param.toString());
 		List<DW_Good_Receipt_Save_Res_Param> res = dw_Service.save_List(req_param);
