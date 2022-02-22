@@ -38,7 +38,7 @@ public class DW_Good_Receipt_Service {
 	}
 	
 	//PO 입고 완료 처리
-	public List<DW_Good_Receipt_Save_Res_Param> save_List(DW_Good_Receipt_Save_Req_Param req_param) {
+	public List<DW_Good_Receipt_Save_Res_Param> save_List(String req_param) {
 		return this.dw_repository.saveList(req_param);
 	}	
 }
