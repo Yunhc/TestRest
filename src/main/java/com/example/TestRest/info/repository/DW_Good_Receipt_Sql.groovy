@@ -2,7 +2,6 @@ package com.example.TestRest.info.repository
 
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Req_Param
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Req_Param
 
 class DW_Good_Receipt_Sql {
