@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Res_Param;
+import com.example.TestRest.info.model.DW_Return_Message;
 import com.example.TestRest.info.repository.DW_Good_Receipt_Repository;
 
 @Service
@@ -21,23 +21,23 @@ public class DW_Good_Receipt_Service {
 		this.dw_repository = dw_repository;
 	}
 
-	//PO ï¿½ï¿½È¸ - PO ï¿½ï¿½È£
+	//PO Á¶È¸ - PO ¹øÈ£
 	public List<DW_Good_Receipt_Res_Param> ord_List(DW_Good_Receipt_Req_Param req_param) {
 		return this.dw_repository.ordList(req_param);
 	}
 
-	//PO ï¿½ï¿½ï¿½ï¿½È¸
+	//PO »ó¼¼Á¶È¸
 	public List<DW_Good_Receipt_Detail_Search_Res_Param> detail_List(DW_Good_Receipt_Detail_Search_Req_Param req_param) {
 		return this.dw_repository.detailList(req_param);
 	}
 
-	//ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½Äµ
+	//¹ÙÄÚµå ½ºÄµ
 	public List<DW_Good_Receipt_Scan_Res_Param> scan_List(DW_Good_Receipt_Scan_Req_Param req_param) {
 		return this.dw_repository.scanList(req_param);
 	}
 
-	//PO ï¿½Ô°ï¿½ ï¿½Ï·ï¿½ Ã³ï¿½ï¿½
-	public List<DW_Good_Receipt_Save_Res_Param> save_List(String req_param) {
+	//PO ÀÔ°í
+	public List<DW_Return_Message> save_List(String req_param) {
 		return this.dw_repository.saveList(req_param);
 	}
 }
