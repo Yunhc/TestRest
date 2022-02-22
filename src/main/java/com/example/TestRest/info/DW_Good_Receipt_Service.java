@@ -19,28 +19,28 @@ import com.example.TestRest.info.repository.DW_Good_Receipt_Repository;
 @Service
 public class DW_Good_Receipt_Service {
 	private final DW_Good_Receipt_Repository dw_repository;
-	
+
 	public DW_Good_Receipt_Service(DW_Good_Receipt_Repository dw_repository) {
 		this.dw_repository = dw_repository;
 	}
-	
-	//PO Á¶È¸ - PO ¹øÈ£
+
+	//PO ï¿½ï¿½È¸ - PO ï¿½ï¿½È£
 	public List<DW_Good_Receipt_Res_Param> ord_List(DW_Good_Receipt_Req_Param req_param) {
 		return this.dw_repository.ordList(req_param);
 	}
 
-	//PO »ó¼¼Á¶È¸
+	//PO ï¿½ï¿½ï¿½ï¿½È¸
 	public List<DW_Good_Receipt_Detail_Search_Res_Param> detail_List(DW_Good_Receipt_Detail_Search_Req_Param req_param) {
 		return this.dw_repository.detailList(req_param);
 	}
-	
-	//¹ÙÄÚµå ½ºÄµ
+
+	//ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½Äµ
 	public List<DW_Good_Receipt_Scan_Res_Param> scan_List(DW_Good_Receipt_Scan_Req_Param req_param) {
 		return this.dw_repository.scanList(req_param);
 	}
-	
-	//PO ÀÔ°í ¿Ï·á Ã³¸®
+
+	//PO ï¿½Ô°ï¿½ ï¿½Ï·ï¿½ Ã³ï¿½ï¿½
 	public List<DW_Return_Message> save_List(DW_Good_Receipt_Save_Req_Param req_param) {
 		return this.dw_repository.saveList(req_param);
-	}	
+	}
 }
