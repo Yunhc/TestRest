@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.example.TestRest.Util;
 import com.example.TestRest.info.model.DW_Good_Receipt_Save_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Save_Res_Param;
+import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param;
@@ -66,12 +67,67 @@ public class DW_Good_Receipt_Repository {
 
 
 	//PO 입고 처리
-	public List<DW_Good_Receipt_Save_Res_Param> saveList(DW_Good_Receipt_Save_Req_Param req_param){
+	public List<DW_Good_Receipt_Save_Res_Param> saveList(String req_param){
 		
-		DW_Good_Receipt_Sql.SELECT_Ord_Save_QUERY(req_param );
-		log.debug("saveList query = {}", DW_Good_Receipt_Sql.SELECT);
+//		DW_Good_Receipt_Sql.SELECT_Ord_Save_QUERY(req_param);
+//		log.debug("saveList query = {}", DW_Good_Receipt_Sql.SELECT);
+//
+//		List<DW_Good_Receipt_Save_Res_Param> res = this.jdbcTemplate.query(DW_Good_Receipt_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Good_Receipt_Save_Res_Param.class));
+//		return res;
 
-		List<DW_Good_Receipt_Save_Res_Param> res = this.jdbcTemplate.query(DW_Good_Receipt_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Good_Receipt_Save_Res_Param.class));
+		List<DW_Good_Receipt_Save_Res_Param> res = null;
+		
+		try {
+			JSONObject jsonObject = new JSONObject(req_param);
+			log.debug("[data] = {}", jsonObject.get("data"));
+			
+			JSONArray jsonData = jsonObject.getJSONArray("data");
+			log.debug("[Data Count] = {}", jsonData.length());
+			
+			String strEndofline = "N";
+			
+			for(int i=0; i<jsonData.length(); i++) {
+				JSONObject dtlObject = jsonData.getJSONObject(i);
+				log.debug("[barno] = {}", dtlObject.get("barno"));
+				
+				if (i == jsonData.length()-1) {
+					strEndofline = "Y";
+				}
+				
+				DW_Good_Receipt_Sql.SELECT_Ord_Save_QUERY(
+					  Util.GetData(jsonObject.get("i_lang")), Util.GetData(jsonObject.get("i_werks")), Util.GetData(jsonObject.get("i_userid")) 		
+					, Util.GetData(dtlObject.get("ebeln")), Util.GetData(dtlObject.get("ebelp")), Util.GetData(dtlObject.get("barno"))
+					, Util.GetData(dtlObject.get("matnr")), Util.GetData(dtlObject.get("qty")), Util.GetData(jsonObject.get("i_device")), Util.GetData(jsonObject.get("i_ipaddress"))
+					, Util.GetData(jsonObject.get("i_model")), Util.GetData(jsonObject.get("i_osversion")), strEndofline
+				);
+				
+				log.debug("saveList query = {}", DW_Good_Receipt_Sql.SELECT);
+				
+				res = this.jdbcTemplate.query( DW_Good_Receipt_Sql.SELECT, BeanPropertyRowMapper.newInstance(DW_Good_Receipt_Save_Res_Param.class));
+				
+				log.debug("[process status] = {}", res.get(0).code);
+				
+				if (res.get(0).code == null) {
+					log.debug("[process status] = {}", "OK");
+					log.debug("[process msg] = {}", res.get(0).message);
+				}
+				else{
+					log.debug("[process status] = {}", "NG");
+					log.debug("[process message] = {}", res.get(0).message);
+					break;
+				}
+				
+			}
+			
+//			if (!res.get(0).code.equals("NG"))
+//				txManager.commit(status);
+//			else
+//				txManager.rollback(status);
+		} catch(Exception e) {
+//			txManager.rollback(status);
+		}
+		
 		return res;
+		
 	}
 }
