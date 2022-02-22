@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Save_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Res_Param;
@@ -12,8 +11,6 @@ import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Res_Param;
-import com.example.TestRest.info.model.DW_Return_Message;
-import com.example.TestRest.info.model.ReturnMsg;
 import com.example.TestRest.info.repository.DW_Good_Receipt_Repository;
 
 @Service
@@ -40,7 +37,7 @@ public class DW_Good_Receipt_Service {
 	}
 
 	//PO �԰� �Ϸ� ó��
-	public List<DW_Return_Message> save_List(DW_Good_Receipt_Save_Req_Param req_param) {
+	public List<DW_Good_Receipt_Save_Res_Param> save_List(String req_param) {
 		return this.dw_repository.saveList(req_param);
 	}
 }
