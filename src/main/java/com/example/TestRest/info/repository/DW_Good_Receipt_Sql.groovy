@@ -48,14 +48,23 @@ class DW_Good_Receipt_Sql {
 	}
 
 	//PO 입고 처리
-	public static SELECT_Ord_Save_QUERY(DW_Good_Receipt_Save_Req_Param req_param)
+	public static SELECT_Ord_Save_QUERY(String i_lang, String i_werks, String i_userid, String i_ord_no, String i_ord_seq,
+		String i_barno, String i_matnr, String i_qty, String i_device, String i_ipaddress, String i_model, String i_osversion, String i_endlineyn)
 	{
 		SELECT = """""";
 		SELECT += """ EXEC USP_MWMS_MMPO_GR_SAVE """
-		SELECT += """  '""" + req_param.i_lang + """'"""
-		SELECT += """, '""" + req_param.i_werks + """'"""
-		SELECT += """, '""" + req_param.i_userid + """'"""
-		SELECT += """, '""" + req_param.i_vbeln + """'"""
-		SELECT += """, '""" + req_param.i_procflag + """'"""
+		SELECT += """  '""" + i_lang + """'"""
+		SELECT += """, '""" + i_werks + """'"""
+		SELECT += """, '""" + i_userid + """'"""
+		SELECT += """, '""" + i_ord_no + """'"""
+		SELECT += """, '""" + i_ord_seq + """'"""
+		SELECT += """, '""" + i_barno + """'"""
+		SELECT += """, '""" + i_matnr + """'"""
+		SELECT += """, '""" + i_qty + """'"""
+		SELECT += """, '""" + i_device + """'"""
+		SELECT += """, '""" + i_ipaddress + """'"""
+		SELECT += """, '""" + i_model + """'"""
+		SELECT += """, '""" + i_osversion + """'"""
+		SELECT += """, '""" + i_endlineyn + """'"""
 	}
 }
