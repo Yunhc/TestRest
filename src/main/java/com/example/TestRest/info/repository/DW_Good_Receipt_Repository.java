@@ -10,17 +10,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.TestRest.Util;
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Save_Res_Param;
-import com.example.TestRest.info.model.DWT_Good_Issue_Scan_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Res_Param;
-import com.example.TestRest.info.model.DW_Return_Message;
-import com.example.TestRest.info.model.ReturnMsg;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,7 +65,7 @@ public class DW_Good_Receipt_Repository {
 
 
 	//PO �԰� ó��
-	public List<DW_Return_Message> saveList(DW_Good_Receipt_Save_Req_Param req_param){
+	public List<DW_Good_Receipt_Save_Res_Param> saveList(String req_param){
 
 //		DW_Good_Receipt_Sql.SELECT_Ord_Save_QUERY(req_param);
 //		log.debug("saveList query = {}", DW_Good_Receipt_Sql.SELECT);
