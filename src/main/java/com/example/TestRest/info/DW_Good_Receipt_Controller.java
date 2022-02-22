@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Req_Param;
-import com.example.TestRest.info.model.DW_Good_Receipt_Save_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Detail_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Req_Param;
 import com.example.TestRest.info.model.DW_Good_Receipt_Scan_Res_Param;
+import com.example.TestRest.info.model.DW_Return_Message;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -71,7 +70,7 @@ public class DW_Good_Receipt_Controller {
 	public Object dw_good_receipt_save(@RequestBody String req_param) {
 		log.debug("/dw/good_receipt/save");
 		log.debug("/dw/good_receipt/save = {}", req_param.toString());
-		List<DW_Good_Receipt_Save_Res_Param> res = dw_Service.save_List(req_param);
+		List<DW_Return_Message> res = dw_Service.save_List(req_param);
 		return res;
 	}	
 }
