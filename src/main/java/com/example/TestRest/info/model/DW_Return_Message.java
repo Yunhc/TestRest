@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class DW_Return_Message {
 	public String code;
+	public String subcode;
 	public String message;
 }
