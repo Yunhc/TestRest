@@ -14,7 +14,8 @@ import com.example.TestRest.info.model.DW_STC_PDA_Search_Res_Param;
 import com.example.TestRest.info.model.DW_STC_PDA_Search_Req_Param;
 import com.example.TestRest.info.model.DW_STC_PDA_Scan_Res_Param;
 import com.example.TestRest.info.model.DW_STC_PDA_Scan_Req_Param;
-
+import com.example.TestRest.info.model.DW_Return_Message;
+import com.example.TestRest.info.model.DW_STC_PDA_Save_Req_Param;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,6 +48,17 @@ public class DW_STC_PDA_Controller {
 		log.debug("/dw/stc/pda/scan");
 		log.debug("/dw/stc/pda/scan request = {}", req_param.toString());
 		List<DW_STC_PDA_Scan_Res_Param> res = dw_Service.scan_List(req_param);
+		return res;
+	}
+
+	//오프라인 재고실사 저장
+	@CrossOrigin("*")
+	@PostMapping(value="/dw/stc/pda/save")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_stc_pda_save(@RequestBody DW_STC_PDA_Save_Req_Param req_param) {
+		log.debug("/dw/stc/pda/save");
+		log.debug("/dw/stc/pda/save request = {}", req_param.toString());
+		List<DW_Return_Message> res = dw_Service.save_List(req_param);
 		return res;
 	}
 }
