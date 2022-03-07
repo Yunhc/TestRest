@@ -53,9 +53,9 @@ public class DW_Stock_Res_Param {
 	public String matnr;	
 	public String maktx;	
 	public String wtschk;	
-	public double qty;	
+	public String qty;	
 	public String meins;	
-	public double uqty;	
+	public String uqty;	
 	public String umeins;	
 	public String preqty;	
 	public String premeins;	
