@@ -43,6 +43,7 @@ public class DW_Stock_Res_Param {
 //	public String MESSAGE;
 	
 	
+//	VUE에서 컬럼 필드가 소문자로 설정되어 있어서 여기서 대문자로 맵핑할 경우 VUE에서 맵핑이 안된다. 그래서 소문자로 변경했음 
 	public String sel;	
 	public String werks;	
 	public String werksnm;	
