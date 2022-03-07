@@ -11,6 +11,7 @@ public class DW_STC_PDA_Search_Res_Param {
 	public String silsatype;
 	public String matgroup;
 	public String matnr;
+	
 	public String code;
 	public String message;
 }
