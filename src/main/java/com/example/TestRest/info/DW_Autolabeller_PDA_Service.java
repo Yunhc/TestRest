@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-//import com.example.TestRest.info.model.DW_Return_Message;
-//import com.example.TestRest.info.model.DW_STC_Autolabeller_Save_Req_Param;
+import com.example.TestRest.info.model.DW_Return_Message;
+import com.example.TestRest.info.model.DW_Autolabeller_PDA_Save_Req_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Res_Param;
 import com.example.TestRest.info.repository.DW_Autolabeller_PDA_Repository;
@@ -26,8 +26,8 @@ public class DW_Autolabeller_PDA_Service {
 	}
 
 
-//	//오프라인 재고실사 저장
-//	public List<DW_Return_Message> save_List(DW_Autolabeller_PDA_Save_Req_Param req_param) {
-//		return this.dw_repository.saveList(req_param);
-//	}
+	//생산실적 처리
+	public List<DW_Return_Message> save_List(DW_Autolabeller_PDA_Save_Req_Param req_param) {
+		return this.dw_repository.saveList(req_param);
+	}
 }
