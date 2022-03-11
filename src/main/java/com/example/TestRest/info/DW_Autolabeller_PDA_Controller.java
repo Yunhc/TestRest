@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Res_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Req_Param;
-//import com.example.TestRest.info.model.DW_Return_Message;
-//import com.example.TestRest.info.model.DW_Autolabeller_PDA_Save_Req_Param;
+import com.example.TestRest.info.model.DW_Autolabeller_PDA_Save_Req_Param;
+import com.example.TestRest.info.model.DW_Return_Message;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,11 +28,13 @@ public class DW_Autolabeller_PDA_Controller {
 		this.dw_Service = dw_Service;
 	}
 
+	
 	//생산오더 정보 조회
 	@CrossOrigin("*")
 	@PostMapping(value="/dw/autolabeller/pda/search")
 	@ResponseStatus(value = HttpStatus.OK)
 	public Object dw_autolabeller_pda_search(@RequestBody DW_Autolabeller_PDA_Search_Req_Param req_param) {
+		
 		log.debug("/dw/autolabeller/pda/search");
 		log.debug("/dw/autolabeller/pda/search request = {}", req_param.toString());
 		List<DW_Autolabeller_PDA_Search_Res_Param> res = dw_Service.search_List(req_param);
@@ -39,15 +42,15 @@ public class DW_Autolabeller_PDA_Controller {
 	}
 	
 
-	//오프라인 재고실사 저장
-//	@CrossOrigin("*")
-//	@PostMapping(value="/dw/autolabeller/pda/save")
-//	@ResponseStatus(value = HttpStatus.OK)
-//	public Object dw_autolabeller_pda_save(@RequestBody DW_Autolabeller_PDA_Save_Req_Param req_param) {
-//		log.debug("/dw/autolabeller/pda/save");
-//		log.debug("/dw/autolabeller/pda/save request = {}", req_param.toString());
-//		List<DW_Return_Message> res = dw_Service.save_List(req_param);
-//		return res;
-//	}
+	//생산실적 처리
+	@CrossOrigin("*")
+	@PostMapping(value="/dw/autolabeller/pda/save")
+	@ResponseStatus(value = HttpStatus.OK)
+	public Object dw_autolabeller_pda_save(@RequestBody DW_Autolabeller_PDA_Save_Req_Param req_param) {
+		log.debug("/dw/autolabeller/pda/save");
+		log.debug("/dw/autolabeller/pda/save request = {}", req_param.toString());
+		List<DW_Return_Message> res = dw_Service.save_List(req_param);
+		return res;
+	}
 }
 
