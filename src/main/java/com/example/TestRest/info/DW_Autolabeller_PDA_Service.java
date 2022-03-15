@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.TestRest.info.model.DW_Return_Message;
+import com.example.TestRest.info.model.DW_Autolabeller_PDA_Change_Lot_Req_Param;
+import com.example.TestRest.info.model.DW_Autolabeller_PDA_Change_Lot_Res_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Save_Req_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Req_Param;
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Res_Param;
@@ -20,7 +22,8 @@ public class DW_Autolabeller_PDA_Service {
 		this.dw_repository = dw_repository;
 	}
 	
-	//재고실사 정보 조회
+	//오토라벨러 생산입고 화면
+	//생산오더 정보 조회
 	public List<DW_Autolabeller_PDA_Search_Res_Param> search_List(DW_Autolabeller_PDA_Search_Req_Param req_param) {
 		return this.dw_repository.searchList(req_param);
 	}
@@ -30,4 +33,11 @@ public class DW_Autolabeller_PDA_Service {
 	public List<DW_Return_Message> save_List(DW_Autolabeller_PDA_Save_Req_Param req_param) {
 		return this.dw_repository.saveList(req_param);
 	}
+	
+	
+	//오토라벨러 Lot 번호 일괄변경 화면
+	//바코드 정보 조회 및 Lot번호 변경
+	public List<DW_Autolabeller_PDA_Change_Lot_Res_Param> change_List(DW_Autolabeller_PDA_Change_Lot_Req_Param req_param) {
+		return this.dw_repository.changeList(req_param);
+	}	
 }
