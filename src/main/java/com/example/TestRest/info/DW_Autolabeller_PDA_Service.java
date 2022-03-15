@@ -28,7 +28,6 @@ public class DW_Autolabeller_PDA_Service {
 		return this.dw_repository.searchList(req_param);
 	}
 
-
 	//积魂角利 贸府
 	public List<DW_Return_Message> save_List(DW_Autolabeller_PDA_Save_Req_Param req_param) {
 		return this.dw_repository.saveList(req_param);
