@@ -1,6 +1,7 @@
 package com.example.TestRest.info.repository
 
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Search_Req_Param
+import com.example.TestRest.info.model.DW_Autolabeller_PDA_Barcode_Info_Req_Param
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Change_Lot_Req_Param
 import com.example.TestRest.info.model.DW_Autolabeller_PDA_Save_Req_Param
 
@@ -49,6 +50,19 @@ class DW_Autolabeller_PDA_Sql {
 		SELECT += """, '""" + req_param.i_userid + """'"""
 		SELECT += """, '""" + req_param.i_barno + """'"""
 		SELECT += """, '""" + req_param.i_lotno + """'"""
+		SELECT += """, '""" + req_param.i_calltype + """'"""
+	}
+
+	//오토라벨러 바코드 정보조회 화면
+	//바코드 정보 조회 및 낱바코드 리스트 조회
+	public static BARCODE_QUERY(DW_Autolabeller_PDA_Barcode_Info_Req_Param req_param)
+	{
+		SELECT = """""";
+		SELECT += """ EXEC USP_MWMS2_AUTOLABELLER_BARCODE_SEARCH """
+		SELECT += """  '""" + req_param.i_lang + """'"""
+		SELECT += """, '""" + req_param.i_werks + """'"""
+		SELECT += """, '""" + req_param.i_userid + """'"""
+		SELECT += """, '""" + req_param.i_barno + """'"""
 		SELECT += """, '""" + req_param.i_calltype + """'"""
 	}
 }
