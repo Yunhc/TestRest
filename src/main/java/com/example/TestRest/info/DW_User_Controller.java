@@ -100,16 +100,6 @@ public class DW_User_Controller {
 //		log.debug("[/dw_usersaveList_post_j request] = {}", Object.keys(req_param.data).length);
 	
 	public Object dw_usersaveList_post_j_old(@RequestBody String req_param) {
-//		JSONParser jsonParser = new JSONParser();
-//		Object obj = null;
-//		try {
-//			obj = jsonParser.parse(req_param);
-//			
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		JSONObject jsonObject = (JSONObject)obj;
 		
 		JSONObject jsonObject = new JSONObject(req_param);
 	
@@ -153,7 +143,7 @@ public class DW_User_Controller {
 	@PostMapping(value="/dw_usersaveList_p_j", produces = "application/json; charset=utf8")
 	@ResponseStatus(value = HttpStatus.OK)
 	public Object dw_usersaveList_post_j(@RequestBody String req_param) {		
-//		log.debug("/dw_usersaveList_p_j");
+		log.debug("/dw_usersaveList_p_j");
 //		log.debug("/dw_usersaveList_p_j = {}", req_param.toString());
 		List<ReturnMsg> returnMsgList = dw_userService.getDW_UserSaveList(req_param);
 		return returnMsgList;
